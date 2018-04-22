@@ -127,6 +127,12 @@ Infinite list: [13,26,..]
   - `let` is an expression
 - `case` can be used similar to function pattern matching but it allows more fine-grained usage - they are useful for pattern matching against something in the middle of an expression
 
+## Recursion
+
+- Recursion is important to Haskell because unlike imperative languages, you do computations in Haskell by declaring what something *is* instead of declaring *how* you get it.
+- the edge case often is the identity (empty list, 0 - addition, 1 - multiplication)
+- trees: the edge case is usually a node that doesn't have any children.
+
 ## Other notes
 
 > in functional programming, TDD is not really needed to "drive the design", because the language itself does the same job, but in a slightly different way:  Good design is the path of least resistance in Haskell, and since re-factoring is so safe and easy, it almost automatically tends in that direction.
