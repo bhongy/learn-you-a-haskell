@@ -110,9 +110,11 @@ Infinite list: [13,26,..]
 ## Guards
 
 - whereas pattern matching ensure the form of values, guards are to test whether some property of values are true or false
+  - patterns: structure/form of input
+  - guards: test the value of input itself (like if statements)
 - it's a bit similar to big if-else tree in imperative languages
 - if the value falls through all guards (without `otherwise`) then the next pattern is evaluated
-- remember there's no `=` between function name (declaration) and the first guard (common syntax error by newbies)
+- ** remember there's no `=` between function name (declaration) and the first guard (common syntax error by newbies)
 - `where` is good to make the guards more readable and avoid repeat calculations
 - `where` can be nested
 - `let <bindings> in <expression>`
@@ -121,6 +123,7 @@ Infinite list: [13,26,..]
   - `[let square x = x * x in (square 5, square 3, square 2)]`
 - use `;` to separate `let` bindings if you can't break it to multiple columns
   - `(let a = 100; b = 200; c = 300 in a*b*c)`
+- `let` can be used for pattern matching
 - `let` can be used in list comprehension
   - it'll be available tothe output function (the part before `|`) as well as all predicates
   - we can omit `in` when using `let` in list comprehension
