@@ -136,6 +136,17 @@ Infinite list: [13,26,..]
 - the edge case often is the identity (empty list, 0 - addition, 1 - multiplication)
 - trees: the edge case is usually a node that doesn't have any children.
 
+## Higher-order Functions
+
+- higher-order functions are functions that either (or both)
+  1. take functions as a parameter 
+  2. return functions as return values
+- it's core to haskell: define computations by defining what stuff is (declarative) rather than using an imperative approach
+- infix functions can also be partially applied to either first or second param
+  - first param: `powerOf2 = (2 **)` or `powerOf2 = (**) 2`
+  - second param: `divideByTen = (/ 10)` (not the same as `(/) 10` < that is `(10 /)`)
+  - you can't do `(- 4)` to create `subtract4` because it'll create negative 4 instead of a partially applied function. Instead, do `subtract4 = subtract 4`.
+
 ## Other notes
 
 > in functional programming, TDD is not really needed to "drive the design", because the language itself does the same job, but in a slightly different way:  Good design is the path of least resistance in Haskell, and since re-factoring is so safe and easy, it almost automatically tends in that direction.
