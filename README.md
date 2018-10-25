@@ -11,9 +11,12 @@ I chose minimum installer and installed directly to my local machine (macOS). I 
 ## Play in ghci
 
 ```sh
+ghci
+
 # (compile and) load a file
 :load <file>
 :l <file>
+:l basic # basic.sh
 
 # reload the modules
 :reload

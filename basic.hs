@@ -40,7 +40,7 @@ length' xs = sum [1 | _ <- xs]
 
 -- removeNonUppercase "Hahaha! Ahahaha!"
 -- > "HA"
--- removeNonUPpercase "IdontLIKEFROGS"
+-- removeNonUppercase "IdontLIKEFROGS"
 -- > "ILIKEFROGS"
 removeNonUppercase :: String -> String
 removeNonUppercase str = [c | c <- str, elem c ['A' .. 'Z']]
@@ -66,3 +66,13 @@ rightTriangles =
   -- if we want to get only the one with perimeter 24 with `take 1 rightTriangles`
   -- , a + b + c == 24
   ]
+
+firstRightTriangleWith24Perimeter =
+  take 1
+    [ (a, b, c)
+    | c <- [1 ..]
+    , b <- [1 .. c]
+    , a <- [1 .. b]
+    , a ^ 2 + b ^ 2 == c ^ 2
+    , a + b + c == 24
+    ]
