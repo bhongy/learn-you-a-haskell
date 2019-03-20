@@ -99,12 +99,18 @@ cylinderSurface r h =
 
 -- case pattern matching
 describeList :: [a] -> String
+describeList xs = "The list is " ++ what xs ++ "."
+  where what [] = "empty"
+        what [x] = "a singletone list"
+        what _ = "a long list"
+{-
 describeList xs =
   "The list is " ++
   case xs of
     []  -> "empty."
     [x] -> "a singleton list."
     _   -> "a long list."
+-}
 
 
 
