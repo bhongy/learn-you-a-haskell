@@ -1,5 +1,5 @@
 -------------------
--- Syntax in Functions
+-- 04. Syntax in Functions
 -- http://learnyouahaskell.com/syntax-in-functions
 -------------------
 

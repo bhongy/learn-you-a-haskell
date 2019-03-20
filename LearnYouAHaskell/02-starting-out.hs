@@ -1,3 +1,8 @@
+-------------------
+-- 02. Starting Out
+-- http://learnyouahaskell.com/starting-out
+-------------------
+
 doubleMe :: Num a => a -> a
 doubleMe x = x + x
 

@@ -1,5 +1,5 @@
 ------------
--- Recursion
+-- 05. Recursion
 -- http://learnyouahaskell.com/recursion
 ------------
 
