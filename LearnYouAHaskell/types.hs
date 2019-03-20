@@ -1,5 +1,5 @@
 import qualified Data.Map as Map
-import Shapes
+import LearnYouAHaskell.Shapes
 
 -- a value constructor is just a function so we can map it over a list
 listOfCircles = map (Circle (Point 0 0)) [10, 20, 30]
@@ -212,7 +212,7 @@ treeInsert x (Node a left right)
   -- except the new left subtree with x inserted to it
   | x < a = Node a (treeInsert x left) right
   -- ask right subtree to insert x
-  | x > a = Node a left (treeInsert x right) 
+  | x > a = Node a left (treeInsert x right)
 
 treeElem :: (Ord a) => a -> Tree a -> Bool
 treeElem x EmptyTree = False

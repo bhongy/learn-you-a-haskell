@@ -1,7 +1,7 @@
 -- use `(..)` to export all value constructor of the data type
 -- Shape(..) is the same as Shape(Circle, Rectangle)
 --
-module Shapes
+module LearnYouAHaskell.Shapes
 ( Point(..)
 {- `, Shape` to only export the data type without its value constructors -}
 , Shape(..)
