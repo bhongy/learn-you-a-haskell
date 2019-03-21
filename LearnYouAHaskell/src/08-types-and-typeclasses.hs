@@ -1,5 +1,5 @@
 import qualified Data.Map as Map
-import LearnYouAHaskell.Shapes
+import Shapes
 
 -- a value constructor is just a function so we can map it over a list
 listOfCircles = map (Circle (Point 0 0)) [10, 20, 30]

@@ -13,7 +13,8 @@ I chose minimum installer and installed directly to my local machine (macOS). I 
 ## Play in ghci
 
 ```sh
-ghci
+stack setup
+stack ghci
 
 # (compile and) load a file
 :load <file>

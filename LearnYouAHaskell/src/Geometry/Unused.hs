@@ -1,7 +1,7 @@
 -- a module for the Modules chapter
 
 -- exports functions (public interface)
-module LearnYouAHaskell.Geometry.Unused
+module Geometry.Unused
 ( sphereVolume
 , sphereArea
 , cubeVolume

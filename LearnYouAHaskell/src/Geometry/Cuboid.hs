@@ -1,4 +1,4 @@
-module LearnYouAHaskell.Geometry.Cuboid
+module Geometry.Cuboid
 ( volume
 , area
 ) where
@@ -11,4 +11,3 @@ area a b c  = rectangleArea a b * 2 + rectangleArea a c * 2 + rectangleArea b c 
 
 rectangleArea :: Float -> Float -> Float
 rectangleArea a b = a * b
-
