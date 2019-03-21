@@ -1,5 +1,5 @@
 -------------------
--- Higher-order Functions
+-- 06. Higher order functions
 -- http://learnyouahaskell.com/higher-order-functions
 -------------------
 
@@ -30,9 +30,9 @@ flip' f x y = f y x
 -- map (map (^2)) [[1,2], [3,4], [5,6,7]]
 -- filter (>3) [1,2,3,4,5]
 
-quicksort' :: (Ord a) => [a] -> [a]
-quicksort' [] = []
-quicksort' (x:xs) =
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
   let smallerSorted = quicksort (filter (<= x) xs)
       biggerSorted = quicksort (filter (> x) xs)
   in smallerSorted ++ (x : biggerSorted)
@@ -64,29 +64,29 @@ numLongChains = length (filter isLong (map chain [1..100]))
 -- numLongChains = length (filter (\xs -> length xs > 15) (map chain [1..100]))
 
 -- left fold
-sum'' :: (Num a) => [a] -> a
--- sum'' xs = foldl (\acc x -> acc + x) 0 xs
-sum'' = foldl (+) 0
+sum' :: (Num a) => [a] -> a
+-- sum' xs = foldl (\acc x -> acc + x) 0 xs
+sum' = foldl (+) 0
 
-elem'' :: (Eq a) => a -> [a] -> Bool
-elem'' x = foldl (\acc y -> if x == y then True else acc) False
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' x = foldl (\acc y -> if x == y then True else acc) False
 
-map'' :: (a -> b) -> [a] -> [b]
+map' :: (a -> b) -> [a] -> [b]
 -- use `:` is much more efficient than `++`, hence foldr
-map'' f = foldr (\x acc -> f x : acc) []
+map' f = foldr (\x acc -> f x : acc) []
 
-maximum'' :: (Ord a) => [a] -> a
-maximum'' = foldr1 (\x acc -> if x > acc then x else acc)
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldr1 (\x acc -> if x > acc then x else acc)
 
-reverse'' :: [a] -> [a]
-reverse'' = foldl (\acc x -> x : acc) []
--- reverse '' = foldl (flip (:)) []
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+-- reverse ' = foldl (flip (:)) []
 
-product'' :: (Num a) => [a] -> a
-product'' = foldr1 (*)
+product' :: (Num a) => [a] -> a
+product' = foldr1 (*)
 
-filter'' :: (a -> Bool) -> [a] -> [a]
-filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' p = foldr (\x acc -> if p x then x : acc else acc) []
 
 -- How many elements does it take for the sum of the roots of all natural numbers to exceed 1000?
 -- 1) get sqrt of all integers

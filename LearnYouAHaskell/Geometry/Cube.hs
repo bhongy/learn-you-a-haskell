@@ -1,9 +1,9 @@
-module Geometry.Cube
+module LearnYouAHaskell.Geometry.Cube
 ( volume
 , area
 ) where
 
-import qualified Geometry.Cuboid as Cuboid
+import qualified LearnYouAHaskell.Geometry.Cuboid as Cuboid
 
 volume :: Float -> Float
 volume side = Cuboid.volume side side side
