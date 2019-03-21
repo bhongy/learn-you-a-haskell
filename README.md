@@ -1,5 +1,7 @@
-# Notes and exercies from Learn You a Haskell for Great Good!
-http://learnyouahaskell.com
+# Learn Haskell
+
+- [Learn You a Haskell for Great Good!](http://learnyouahaskell.com)
+- [Finite-State Machines in Haskell](https://wickstrom.tech/archive.html)
 
 ## Set up
 
