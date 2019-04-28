@@ -9,6 +9,8 @@ copyright:           "2019 Thanik Bhongbhibhat"
 dependencies:
 - base >= 4.7 && < 5
 - containers
+- lens
+- text
 
 # library:
 #   source-dirs: lib
