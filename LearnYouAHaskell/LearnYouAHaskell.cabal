@@ -1,8 +1,10 @@
--- This file has been generated from package.yaml by hpack version 0.28.2.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 989ac69f36835b915e4832663d46644011336aa51df0041297ac3fab0817193a
+-- hash: 1400ad978ca3622d699b012252a973bbdbbc10750ff02773149368b471b57bac
 
 name:           LearnYouAHaskell
 version:        0.1.0.0
@@ -13,7 +15,6 @@ maintainer:     email@thanik.me
 copyright:      2019 Thanik Bhongbhibhat
 license:        MIT
 build-type:     Simple
-cabal-version:  >= 1.10
 
 source-repository head
   type: git
