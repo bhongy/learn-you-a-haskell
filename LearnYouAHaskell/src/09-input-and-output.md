@@ -30,3 +30,42 @@
 - `mapM_` like `mapM` but throws away the result
 - `forever` takes an IO action and repeats it forever
 - `forM` 
+
+## Files and streams
+
+- `getContents` reads from stdin until encounters an EOF character (Ctrl-D)
+  - it's lazy like everything else in Haskell
+  - it won't read the entire content but rather process it like stream
+  - so you can use unix `cat` to pipe text to the program
+  - e.g. `cat haiku.txt | ./capslocker`
+- `interact` the pattern of taking IO input, transform, then output (IO)
+  - takes the transform function of type `String -> String`
+- reading/writing from stdin/stdout (terminal) is similar to r/w to a special type of file.
+- `openFile` takes `FilePath` and `IOMode` returning `IO Handle` (file handler)
+  - `FilePath` is just an alias for `String`
+  - `data IOMode = ReadMode | WriteMode | AppendMode | ReadWriteMode`
+  - think of `Handle` as the reference to the file
+- `withFile` is similar to `openFile` but will close the file automatically once the `IO` action "returns"
+- `hGetLine`, `hPutStr`, `hPutStrLn`, `hGetChar` all takes a handler and work like the non-"h" counterparts
+  - think of the "default" `putStr` has stdout handle already applied).
+
+> when seeing an IO action think "will" (promise) - an instruction (data) that something will happens, hence you can compose them together - OR think of it like connecting pipes of data streams
+> example: `putStr` "will" write the content (streamed) to stdout / `getLine` "will" read a line from stdin
+
+- common file handling helpers: `readFile`, `writeFile`, `appendFile`
+  - similir to `withFile` the runtime will handle the closing of the file automatically
+- for text files, the default buffering is usually line-buffering
+- for binary files, the default buffering is usually block-buffering (chunk, determine by the operating system)
+- `hSetBuffering handle` can be set to override the default buffering
+  - `NoBuffering` means it will read one character at a time (bad idea, spam disk access)
+
+
+
+
+
+
+
+
+
+
+
