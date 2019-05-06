@@ -59,9 +59,10 @@
 - `hSetBuffering handle` can be set to override the default buffering
   - `NoBuffering` means it will read one character at a time (bad idea, spam disk access)
 
+## Command line arguments
 
-
-
+- use `getArgs` (`System.Environment`) to get command line arguments (strings)
+- use `getProgName` to get program name
 
 
 
