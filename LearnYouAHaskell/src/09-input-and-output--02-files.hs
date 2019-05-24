@@ -5,10 +5,11 @@
 
 {- To test all these functions. Just run them in ghci -}
 
-import Data.Char
-import Data.List (delete, (!!))
-import System.IO
-import System.Directory
+import           Control.Lens.Operators ((<&>))
+import           Data.Char
+import           Data.List              (delete, (!!))
+import           System.Directory
+import           System.IO
 
 -- usage - in command line: `cat file.txt | ./capslocker`
 capslocker = do
@@ -25,7 +26,6 @@ ioShortLines = do
 -}
 
 ioShortLines = interact shortLinesOnly
--- ioShortLines = interact $ unlines . filter ((< 10) .length) . lines
 
 respondPalidromes :: String -> String
 respondPalidromes = unlines . map respond . lines
@@ -45,11 +45,14 @@ catFileContent filename = do
 
 -- withFile :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
 catFileContent2 :: String -> IO ()
-catFileContent2 filename = do
+catFileContent2 filename =
   -- withFile will handle closing the file when the handler returns
   withFile filename ReadMode (\handle -> do
     contents <- hGetContents handle
     putStr contents)
+
+catFileContent3 :: String -> IO ()
+catFileContent3 filename = readFile filename <&> map toUpper >>= putStr
 
 withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
 withFile' path mode f = do
@@ -69,6 +72,8 @@ addTodo = do
   todoItem <- getLine
   appendFile "todo.txt" (todoItem ++ "\n")
 
+addTodo' = getLine <&> (++ "\n") >>= appendFile "todo.txt"
+
 removeTodo = do
   srcHandle <- openFile "todo.txt" ReadMode
   (tempName, tempHandle) <- openTempFile "." "temp"
@@ -78,7 +83,7 @@ removeTodo = do
   putStrLn "These are your TO-DO items:"
   -- remember `unlines` "join" list of strings with "\n"
   -- putStr $ unlines numberedTasks
-  mapM putStrLn numberedTasks
+  mapM_ putStrLn numberedTasks
   putStrLn "Which one do you want to delete?"
   numberString <- getLine
   -- ghc can infer type of number in the next line
@@ -89,3 +94,18 @@ removeTodo = do
   hClose tempHandle
   removeFile "todo.txt"
   renameFile tempName "todo.txt"
+
+displayTodos' =
+  readFile "todo.txt"
+  >>= \contents
+    -> putStrLn "These are your TO-DO items:"
+    >> putStr (formatWithNumber contents)
+  where
+    formatWithNumber :: String -> String
+    formatWithNumber =
+      unlines . zipWith (\n line -> show n ++ " - " ++ line) [0..] . lines
+
+removeAtIndex :: Int -> [a] -> [a]
+removeAtIndex removeAt = map snd . filter ((/= removeAt) . fst) . zip [0..]
+
+-- removeTodo' =
