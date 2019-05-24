@@ -47,7 +47,10 @@
   - think of `Handle` as the reference to the file
 - `withFile` is similar to `openFile` but will close the file automatically once the `IO` action "returns"
 - `hGetLine`, `hPutStr`, `hPutStrLn`, `hGetChar` all takes a handler and work like the non-"h" counterparts
-  - think of the "default" `putStr` has stdout handle already applied).
+  - the `h` versions (e.g. `hGetContents`) takes file `handle`
+  - `hGetContents :: Handle -> IO String`
+  - `getContents :: IO String`
+  - think of the "default" `putStr` has stdout handle already applied - i.e. `putStr == hPutStr stdout`
 
 > when seeing an IO action think "will" (promise) - an instruction (data) that something will happens, hence you can compose them together - OR think of it like connecting pipes of data streams
 > example: `putStr` "will" write the content (streamed) to stdout / `getLine` "will" read a line from stdin

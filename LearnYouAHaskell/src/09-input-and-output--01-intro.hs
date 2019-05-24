@@ -48,7 +48,7 @@ greeting2_lambda =
     upper = map toUpper
     formatReply :: (String, String) -> String
     formatReply (first, last) =
-      "Hey " ++ (upper first) ++ " " ++ (upper last) ++ ", how are you?"
+      "Hey " ++ upper first ++ " " ++ upper last ++ ", how are you?"
 
 printReversedWords :: IO ()
 printReversedWords = do
