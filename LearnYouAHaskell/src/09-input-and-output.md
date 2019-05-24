@@ -64,6 +64,9 @@
 
 ## Command line arguments
 
+> run `stack ghc <program.hs>` to compile the program
+> run `stack runhaskell <program.hs>` to compile and run the program
+
 - use `getArgs` (`System.Environment`) to get command line arguments (strings)
 - use `getProgName` to get program name
 
