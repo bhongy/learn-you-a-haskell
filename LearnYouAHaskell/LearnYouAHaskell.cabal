@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 26dcfc30f00067b38d6f0154eeb0ca12da7ee487bd6181f2123121bdf269543e
+-- hash: fb7e9fdbee54a5456db00ab2fe0f881c5d7b8d1ddd6827e96b195a485bc699ff
 
 name:           LearnYouAHaskell
 version:        0.1.0.0
@@ -34,6 +34,7 @@ executable LearnYouAHaskell-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring
     , containers
     , directory
     , lens
@@ -51,6 +52,7 @@ test-suite LearnYouAHaskell-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring
     , containers
     , directory
     , lens
