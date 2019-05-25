@@ -70,9 +70,15 @@
 - use `getArgs` (`System.Environment`) to get command line arguments (strings)
 - use `getProgName` to get program name
 
+## Randomness
 
-
-
-
-
-
+- calling the random function twice with the random value generator produces the same "random" value
+- `random` takes a generator and produce a random value with a new generator
+- `randoms` takes a initial generator and produces an infinite list of random values
+- `randomR` takes a generator and produces a value in a range. The result in inclusive of lower and upper bound.
+- `getStdGen` get `IO StdGen` for real randomness.
+  - note that when the program starts, it askes the system to get a random number generator and store it in the global generator.
+  - `getStdGen` returns the global generator—i.e. calling it twice will give the same generator and will result in the same random values.
+  - to get different result, you have to generate infinite stream and take different parts of the stream (e.g. use `splitAt`)
+  - or use `newStdGen`
+- `newStdGen` will create a new global generator. Calling `getStdGen` afterward will also return the new global generator (which is different that the one before calling `newStdGen`).
