@@ -8,6 +8,7 @@ copyright:           "2019 Thanik Bhongbhibhat"
 
 dependencies:
 - base >= 4.7 && < 5
+- bytestring
 - containers
 - directory
 - lens

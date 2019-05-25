@@ -82,3 +82,31 @@
   - to get different result, you have to generate infinite stream and take different parts of the stream (e.g. use `splitAt`)
   - or use `newStdGen`
 - `newStdGen` will create a new global generator. Calling `getStdGen` afterward will also return the new global generator (which is different that the one before calling `newStdGen`).
+
+## ByteString
+
+> Whenever you need better performance in a program that reads a lot of data into strings, give bytestrings a try. Start with normal string and convert to bytestring if the performance is not good enough.
+
+- reading string (lazy) as a stream has overhead of processing each character individually
+- Bytestring handles them in chunks (64k - fits neatly into CPU's L2 cache)
+- `pack` turns `[Word8]` to `ByteString`. `Word8` is an integer between 0-255 represents an 8-bit number.
+- `fromChunks`, `toChunks` convert between strict and lazy bytestrings
+  - `fromChunks` is good to "join" small strict bytestrings into chunks of lazy ones to process them more efficiently
+- `cons` (like list `:` cons) prepend a byte into the front of bytestring
+  - not very efficient because it'll create a new chunk (thunk of chunk) even it's not full (64k)
+  - better to use the strict `cons'` if going to insert bytes into the front of bytestrings
+- there're also functions similar to those from `System.IO` but operates on `ByteString` instead - e.g. `readFile`
+
+## Exceptions
+
+> Pure functions are lazy by default, which means that we don't know when they will be evaluated (order of execution) and that it really shouldn't matter. However, once pure functions start throwing exceptions, it matters when they are evaluated.
+
+- When dealing with pure functions, (ideally) only think about what a function returns
+- Don't mix exceptions and pure code.
+- Model pure functions without exceptions and use exceptions only in I/O parts
+- `System.Directory (doesFileExist)` gives `IO Bool` to check if the file exists 
+- `System.IO.Error (catchIOError)` can be used to to try-catch
+  - `ioError` is used to rethrow error (taking `IOError`) and produces IO action that will throw the error
+- `isAlreadyExistsError`, `isDoesNotExistError`, `isAlreadyInUseError`, `isFullError`, `isEOFError`, `isIllegalOperation`, `isPermissionError`, `isUserError`
+- `System.IO.Error` contains functions (starts with `ioe`, e.g. `ioeGetFileName`) to get attributes from the exceptions
+  - http://hackage.haskell.org/package/base/docs/System-IO-Error.html#g:3
